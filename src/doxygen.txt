@@ -1,0 +1,124 @@
+score dans Joueur, pas dans Avion
+
+serveur->envoyer(filtre, texte)
+
+Commenter un fichier:
+
+/**
+ * \file    *.h
+ * \author  Dany Maillard
+ * \version 1.0
+ * \date    12 Novembre 2009
+ * \brief   Description courte
+ * \details Details du fichier
+ */
+
+Commenter une fonction ou une méthode:
+
+/**
+ * \brief   Description courte
+ * \details Details de la méthode
+ * \param   param1  Description du paramètre 1
+ * \param   param2  Description du paramètre 2
+ * \return  Description du return
+ */
+
+Commenter une énumération:
+
+/**
+* \brief   Description courte
+* \details Details de l'énumération
+*/
+enum A
+{
+   COLOR_BLUE,      /*!< Couleur bleu (0,0,255)               */
+   COLOR_DARK_RED,  /*!< Couleur rouge sombre (64,0,0)  */
+   COLOR_OLIVE      /*!< Couleur olive (51,51,0)               */
+}
+
+-----
+
+\a           Utiliser pour faire ressortir un paramètre dans sa description.
+                      ex:   /** ...les coordonnées \a x et \a y du point.... */
+                             donne
+                             ...les coordonnées x et y du point....
+    \author  {liste d'auteur}
+                   Utiliser pour indiquer l'auteur du fichier ou de la fonction, structure ou de la chose décrite.
+                       ex:   /** \author Miroslav */
+    \b           Utiliser pour mettre en gras un mot dans une description; équivalent à <b>mot</b> en HTML.
+                      ex:   /** ...il est \b important que.... */   donne   ...il est important que....
+    \brief     Utiliser pour créer un résumé de description.
+                      ex:    /**
+                                 * \brief Ici le résumé de la description...
+                                 *...qui peut prendre plusieurs lignes (mais rester bref)
+                                 *
+                                 * Ici la description complète...
+                                 */
+    \bug       Utiliser pour indiquer un bug dans une fonction ou un morceau de programme.
+                      ex:   /** \bug La probabilité calculée dépasse parfois 1. */
+    \class <nom> [<fichier-header>] [<chemin-du-header>]
+                  Utiliser pour décrire une classe. Le premier paramètre est obligatoire, les suivants optionnels.
+                  Attention toutefois à ce que les paramètres soit corrects, la casse est prise en compte.
+                      ex:   /** \class Voiture voiture.h "inc/voiture.h" */
+                             class Voiture { };
+    \date     Utiliser pour indiquer la date de création de la partie commentée.
+                     ex:    /**  \date 7 juin 1954 */
+    \def       Utiliser pour indiquer un commentaire pour une macro #define.
+                     ex:   /**  \def  MAX(x,y)  */
+    \e          Utiliser pour emphasier un mot dans une phrase. Equivalent à la balise HTML <em>.
+                     ex:   /** ....ceci constitue un \e vraiment bon exemple.... */
+                            donne
+                            ...ceci constitue un vraiment bon exemple...
+    \enum <nom>    Uiliser pour introduire la description d'une énumération de type enum.
+                                     ex:   /** \enum COULEUR */
+    \file <nom>       Utiliser pour décrire un fichier.
+                                L'attribut <nom> doit être exact et fourni avec l'extension.
+                                     ex:   /** \file mon_fichier.c */
+    \fn                       Utiliser pour introduire la description d'une fonction.
+                                Peut-être omis si la description est placée immédiatement
+                                sous la déclaration de la fonction et sans saut de ligne.
+                                     ex:   /** \fn Cette fonction calcul le..... */
+    \namespace <nom>    Utiliser pour introduire la description d'un espace de nommage.
+                                          L'attribut <nom> doit être exact.
+                                              ex:    /** \namespace maths */
+    \param <nom> {description}
+                  Utiliser pour lister et décrire les paramètres d'une fonction.
+                  Le nom doit être exact et la description optionnelle peut-être multiligne.
+                  Peut être suivi de [in], [out] ou [in,ou] pour indiquer si les paramètres sont input-output.
+                      ex:   /** Cette fonction copie les \a n premiers caractères d'une chaîne dans une autre.
+                               * \param[out]   dst   la chaîne de destination
+                               * \param[in]     src    la chaîne à copier
+                               * \param          n      le nombre de caractère à copier
+                               */
+                               char *strncpy (char *dst, const char *src, size_t n);
+    \return {description}
+                  Utiliser pour décrire le paramètre renvoyé par une fonction. La description peut-être multiligne.
+                       ex:  il suffit d'ajouter à l'exemple précédent la ligne:
+                              * \return       renvoit la chaîne de caractère contenu dans src.
+    \struct <nom> [<fichier-header>] [<chemin-du-header>]
+                   Utiliser pour décrire une structure. Le premier paramètre est obligatoire, les suivants optionnels.
+                   Attention toutefois à ce que les paramètres soit corrects, la casse est prise en compte.
+                       ex:   /** \struct Pixel pixel.h "inc/pixel.h" */
+                               struct Pixel{ };
+    \todo {description}
+                   Utiliser pour indiquer ce qu'il reste à faire. La description peut être multiligne.
+                        ex:   /**
+                                 * \todo  Finir l'implémentation des accesseurs de la classe...
+                                 *              ...et encore détails nécessitant plusieurs lignes
+                                 */
+    \typedef      Utiliser pour introduire la description d'un typedef.
+                            ex:  /**  \typedef  Voiture: la classe voiture  */
+    \union <nom> [<fichier-header>] [<chemin-du-header>]
+                        Utiliser pour décrire une union. Le premier paramètre est obligatoire, les suivants optionnels.
+                        Attention toutefois à ce que les paramètres soit corrects, la casse est prise en compte.
+                            ex:   /** \union Couleurs couleurs.h "inc/couleurs.h" */
+                                    union Couleurs{ };
+    \version      Utiliser pour définir la version d'un fichier.
+                            ex:  /** \version 1.0beta */
+    \@ \& \\ \< \~ \# \% ...
+                         Utiliser pour insérer le caractère correspondant dans une description.
+                             ex:   /** Applique  \<b\> aux attributs \#1 et \#2 parsé en XML.
+                                       *\{cf fichier \~.tmp; en cas de problème contacter l'\@auteur\}  */
+                                    donne
+                                    Applique <b> aux attributs #1 et #2 parsé en XML.
+                                    {cf fichier ~.tmp  en cas de problème contacter l'@uteur}
